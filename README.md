@@ -35,6 +35,26 @@ Before importing files, configure your global import defaults:
 
 Simply drop an `.ase` or `.aseprite` file into the Godot FileSystem. It will be recognized and imported as an `AnimationLibrary`. 
 
-Your unit code can then grab the `AnimationLibrary` from your database and apply it to its generic `AnimationPlayer` at runtime:
-```gdscript
-$AnimationPlayer.add_animation_library("", my_imported_library)
+Your game code can then grab the `AnimationLibrary` from your database and apply it to its generic `AnimationPlayer` at runtime.
+
+## Bonus Utility: Aseprite Auto-Tagging Script
+
+If you are migrating existing PNG sprite sheets to this new `.ase` pipeline, manually splitting and tagging them in Aseprite can be tedious. The addon folder includes a helper Lua script (`aseprite_auto_tags.lua`) to automate this.
+
+**What it does:**
+It takes a flat PNG sprite sheet, splits it into frames based on the number of columns you specify, trims empty (transparent) frames at the end of each row, creates colored tags for every row, and automatically names the standard tags (`idle` for the first row, `death` for the last, `hurt` for the second to last).
+
+**How to install and use:**
+
+1. Open Aseprite.
+2. Go to **File -> Scripts -> Open Scripts Folder**.
+3. Copy the `aseprite_auto_tags.lua` file from this addon into that folder.
+4. In Aseprite, go to **File -> Scripts -> Rescan Scripts**.
+5. Open your flat PNG sprite sheet in Aseprite.
+6. Run the script from **File -> Scripts -> aseprite_auto_tags**.
+7. Enter the number of columns in your sprite sheet and click "Split and Clean".
+8. Save the file as `.ase` or `.aseprite` and drop it into your Godot project.
+You also can use Aseprite hotkeys to speed-up pipeline even further.  
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
