@@ -89,7 +89,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var vframes = 1 
 
 	for tag in data["tags"]:
-		var anim_name = tag["name"]
+		var anim_name = str(tag["name"]).strip_edges()
 		var anim = Animation.new()
 		anim.step = 0.05
 		
@@ -115,7 +115,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		# 1. Apply speed modifier if the animation name matches
 		var speed_mult = 1.0
 		for key in speed_mods.keys():
-			if anim_name.contains(key):
+			if anim_name == key :
 				speed_mult = speed_mods[key]
 
 		var current_time = 0.0
@@ -150,7 +150,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		# 3. Auto-looping based on name mask
 		var should_loop = false
 		for loop_name in loop_anims:
-			if anim_name.contains(loop_name):
+			if anim_name == loop_name:
 				should_loop = true
 				break
 				
