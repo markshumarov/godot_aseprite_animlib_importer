@@ -35,6 +35,6 @@ Before importing files, configure your global import defaults:
 
 Simply drop an `.ase` or `.aseprite` file into the Godot FileSystem. It will be recognized and imported as an `AnimationLibrary`. 
 
-Your unit code can then grab the `AnimationLibrary` from your database and apply it to its generic `AnimationPlayer` at runtime:
+Your game code can then grab the `AnimationLibrary` from your database and apply it to its generic `AnimationPlayer` at runtime:
 ```gdscript
 $AnimationPlayer.add_animation_library("", my_imported_library)
